@@ -62,7 +62,7 @@ searchForm.addEventListener('submit', async event => {
       } else {
         // Якщо колекція закінчилася на першій сторінці
         iziToast.info({
-          title: 'Info',
+          // title: 'Info',
           message: "We're sorry, but you've reached the end of search results.",
           position: 'topRight',
           backgroundColor: 'rgba(76, 175, 80, 0.8)',
@@ -111,7 +111,7 @@ loadMoreBtn.addEventListener('click', async () => {
     } else {
       // Якщо колекція закінчилася
       iziToast.info({
-        title: 'Info',
+        //  title: 'Info',
         message: "We're sorry, but you've reached the end of search results.",
         position: 'topRight',
         backgroundColor: 'rgba(76, 175, 80, 0.8)',
