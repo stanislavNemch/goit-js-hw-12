@@ -1,0 +1,194 @@
+.form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form input {
+  padding: 10px 16px;
+  border: 1px solid #808080;
+  border-radius: 4px;
+  font-weight: 400;
+  width: 272px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.form input:hover,
+.form input:focus {
+  border-color: #4e75ff;
+}
+
+.form button {
+  padding: 10px 16px;
+  background-color: #4e75ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form button:hover {
+  background-color: #6c8cff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px;
+  background-color: #f0f0f0; /* Світло-сірий фон для контрасту */
+}
+
+/* Стилі для галереї зображень */
+.gallery {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid; /* Використовуємо grid для сітки карток */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(320px, 1fr)
+  ); /* Адаптивна сітка, щоб вмістити 360px карти */
+  /* Або для фіксованих 3 колонок: grid-template-columns: repeat(3, 1fr); */
+  gap: 24px; /* Проміжок між елементами */
+  max-width: 1128px; /* Максимальна ширина контейнера: 3 * 360px + 2 * 24px = 1080 + 48 = 1128px */
+  width: 100%;
+  justify-content: center; /* Центрує сітку, якщо вона менша за max-width */
+}
+
+@media (min-width: 1128px) {
+  /* Якщо екран достатньо широкий, щоб вмістити 3 колонки по 360px + gap */
+  .gallery {
+    grid-template-columns: repeat(3, 360px); /* Фіксовано 3 колонки по 360px */
+  }
+}
+@media (max-width: 1127px) and (min-width: 752px) {
+  /* 2 колонки по 360px + gap = 720 + 24 = 744px */
+  .gallery {
+    grid-template-columns: repeat(2, 360px);
+  }
+}
+@media (max-width: 751px) {
+  /* 1 колонка 360px (або менше, якщо є адаптація) */
+  .gallery {
+    grid-template-columns: repeat(
+      1,
+      minmax(320px, 360px)
+    ); /* Одна колонка, але мінімум 320px */
+  }
+}
+
+.gallery-item {
+  border: 1px solid #808080;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  width: 360px; /* Задана ширина блока з картинкою */
+  display: flex;
+  flex-direction: column;
+  /* Висота блоку тепер буде визначатися його вмістом (зображення 200px + інфо-блок) */
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+}
+
+.gallery-item a {
+  display: flex;
+  flex-direction: column;
+  height: 100%; /* Дозволяє посиланню займати всю висоту картки */
+  text-decoration: none;
+  color: inherit; /* Наслідуємо колір тексту */
+}
+
+.gallery-image {
+  width: 100%;
+  height: 200px; /* Фіксована висота зображення */
+  object-fit: cover;
+  display: block; /* Забезпечуємо, що зображення є блоковим елементом */
+}
+
+.image-info {
+  display: flex;
+  justify-content: space-around;
+  padding: 4px 20px;
+  text-align: center;
+  flex-shrink: 0; /* Щоб інформаційний блок не зменшувався */
+  border-top: 1px solid #e0e0e0; /* Додаємо розділювач, як на макеті */
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info-item b {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.33333;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+.info-item p {
+  margin: 0;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 2;
+  letter-spacing: 0.04em;
+  color: #2e2f42;
+}
+
+/* Стилі для лоадера */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.loader-text {
+  font-weight: 400;
+  color: #2e2f42;
+}
+
+.loader.hidden {
+  display: none; /* Прихований за замовчуванням */
+}
+
+/* Стилі для кнопки Load more */
+.load-more-button {
+  padding: 10px 20px;
+  background-color: #4e75ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 24px; /* Відступ від галереї */
+  margin-bottom: 24px;
+  display: block; /* Щоб кнопка займала всю ширину і можна було центрувати auto margin */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.load-more-button:hover {
+  background-color: #6c8cff;
+}
+
+.load-more-button.hidden {
+  display: none; /* Прихована за замовчуванням */
+}
