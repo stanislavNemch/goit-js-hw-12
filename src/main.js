@@ -37,6 +37,7 @@ searchForm.addEventListener('submit', async event => {
       minHeight: '88px',
       padding: '20px',
     });
+    searchInput.value = '';
     return;
   }
   currentPage = 1; // Скидаємо номер сторінки для нового пошуку
