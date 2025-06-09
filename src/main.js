@@ -28,6 +28,17 @@ searchForm.addEventListener('submit', async event => {
   event.preventDefault(); // Запобігаємо стандартній відправці форми
 
   currentQuery = searchInput.value.trim(); // Отримуємо пошуковий запит та видаляємо зайві пробіли
+  if (!currentQuery) {
+    iziToast.warning({
+      message: 'Please enter a search query.',
+      position: 'topRight',
+      backgroundColor: 'rgba(255, 193, 7, 0.8)',
+      maxWidth: '432px',
+      minHeight: '88px',
+      padding: '20px',
+    });
+    return;
+  }
   currentPage = 1; // Скидаємо номер сторінки для нового пошуку
   totalHits = 0; // Скидаємо загальну кількість знайдених зображень
 
