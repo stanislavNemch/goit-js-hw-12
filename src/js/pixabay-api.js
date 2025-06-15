@@ -22,10 +22,10 @@ export async function getImagesByQuery(query, page = 1) {
     const response = await axios.get(BASE_URL, { params });
     const filteredHits = response.data.hits.filter(hit => {
       const tagsArray = hit.tags
-        .toLowerCase()
         .split(',')
-        .map(tag => tag.trim());
-      return !forbiddenTags.some(forbidden => tagsArray.includes(forbidden));
+        .map(tag => tag.trim().toLowerCase());
+      // Фильтруем только по полному совпадению тегов
+      return !tagsArray.some(tag => forbiddenTags.includes(tag));
     });
     return { ...response.data, hits: filteredHits };
   } catch (error) {
